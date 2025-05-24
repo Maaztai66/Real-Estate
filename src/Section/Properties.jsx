@@ -45,85 +45,70 @@ const Properties = () => {
 
         {/* properties grid start here */}
 
-        <div className="grid lg:grid-cols-3 grid-cols-1 gap-8 w-full justify-center items-center">
-          {property.map((item, index) => {
-            return (
-              <div key={index}>
-                <div
-                  className="relative w-full h-[400px] rounded-xl overflow-hidden shadow-md"
-                  data-aos="zoom-in"
-                  data-aos-delay="300"
-                >
-                  {/* Image Box */}
-                  <div
-                    className="w-full h-[250px] rounded-t-xl bg-cover bg-center relative"
-                    style={{ backgroundImage: `url(${item.images})` }}
-                  >
-                    {/* <div className="absolute inset-0 bg-black bg-opacity-30 rounded-t-xl"></div> */}
+        <div
+  className="relative w-full min-h-[420px] rounded-xl overflow-hidden shadow-md flex flex-col"
+  data-aos="zoom-in"
+  data-aos-delay="300"
+>
+  {/* Image Section */}
+  <div
+    className="w-full h-[250px] bg-cover bg-center relative"
+    style={{ backgroundImage: `url(${item.images})` }}
+  >
+    {/* Top Left Badges */}
+    <div className="absolute top-2 left-2 flex flex-col gap-2 z-10">
+      <span className="bg-green-600 text-white text-xs px-3 py-1 rounded-full">
+        For Sale {item.type}
+      </span>
+      <span className="bg-red-600 text-white text-xs px-3 py-1 rounded-full">
+        Featured
+      </span>
+    </div>
 
-                    {/* Top Badges */}
-                    <div className="absolute top-2 left-2 flex flex-col gap-2 z-10">
-                      <span className="bg-green-600 text-white text-xs px-3 py-1 rounded-full">
-                        For Sale {item.type}
-                      </span>
-                      <span className="bg-red-600 text-white text-xs px-3 py-1 rounded-full">
-                        Featured
-                      </span>
-                    </div>
+    {/* Top Right Icons */}
+    <div className="absolute top-2 right-2 flex flex-col items-center gap-2 z-10">
+      <FaShareAlt className="text-white text-sm md:text-lg cursor-pointer" />
+      <FaPlus className="text-white text-sm md:text-lg cursor-pointer" />
+    </div>
+  </div>
 
-                    {/* Top Right Icons */}
-                    <div className="absolute top-2 right-2 flex flex-col items-center gap-2 z-10">
-                      <FaShareAlt className="text-white text-lg cursor-pointer" />
-                      <FaPlus className="text-white text-lg cursor-pointer" />
-                    </div>
-                  </div>
+  {/* Details Section */}
+  <div className="bg-gray-100 flex-grow p-4 flex flex-col gap-2 relative">
+    <div className="flex justify-between items-center">
+      <h2 className="text-base font-semibold text-gray-800">{item.name}</h2>
+      <h3 className="text-base font-bold text-green-600">${item.price}</h3>
+    </div>
 
-                  {/* Details Section */}
-                  <div className="bg-gray-100 rounded-b-xl p-4 flex flex-col gap-2">
-                    {/* Title + Price */}
-                    <div className="flex justify-between items-center">
-                      <h2 className="text-lg font-semibold text-gray-800">
-                        {item.name}
-                      </h2>
-                      <h3 className="text-lg font-bold text-green-600">
-                        ${item.price}
-                      </h3>
-                    </div>
+    <div className="flex items-center text-sm text-gray-500 gap-1">
+      <FaMapMarkedAlt />
+      <span>{item.address}</span>
+    </div>
 
-                    {/* Location */}
-                    <div className="flex items-center text-sm text-gray-500 gap-1">
-                      <FaMapMarkedAlt />
-                      <span>{item.address}</span>
-                    </div>
+    <div className="flex justify-between text-sm mt-2 text-gray-700 flex-wrap gap-2">
+      <div className="flex items-center gap-1">
+        <FaBed /> {item.bed} Beds
+      </div>
+      <div className="flex items-center gap-1">
+        <FaBath /> {item.bath} Baths
+      </div>
+      <div className="flex items-center gap-1">
+        <MdSpaceDashboard /> {item.area}
+      </div>
+    </div>
 
-                    {/* Info Row */}
-                    <div className="flex justify-between text-sm mt-2 text-gray-700">
-                      <div className="flex items-center gap-1">
-                        <FaBed /> {item.bed} Beds
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <FaBath /> {item.bath} Baths
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <MdSpaceDashboard /> {item.area}
-                      </div>
-                    </div>
+    <div className="flex items-center gap-2 text-sm text-gray-600 mt-3">
+      <FaUserCircle className="text-lg" />
+      <span>{item.owner}</span>
+    </div>
 
-                    {/* Agent/Owner */}
-                    <div className="flex items-center gap-2 text-sm text-gray-600 mt-3">
-                      <FaUserCircle className="text-xl" />
-                      <span>{item.owner}</span>
-                    </div>
-                    <div className="absolute bottom-2 right-2 flex gap-2 z-10">
-                      <FaVideo className="text-white text-lg bg-black bg-opacity-50 p-1 rounded-full cursor-pointer" />
-                      <FaCamera className="text-white text-lg bg-black bg-opacity-50 p-1 rounded-full cursor-pointer" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
+    {/* Bottom Right Icons */}
+    <div className="absolute bottom-3 right-3 flex gap-2">
+      <FaVideo className="text-white text-sm md:text-lg bg-black bg-opacity-60 p-1 rounded-full cursor-pointer" />
+      <FaCamera className="text-white text-sm md:text-lg bg-black bg-opacity-60 p-1 rounded-full cursor-pointer" />
+    </div>
+  </div>
+</div>
+
       </section>
     </div>
   );
